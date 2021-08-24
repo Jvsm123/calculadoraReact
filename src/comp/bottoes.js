@@ -8,7 +8,7 @@ export default class Bottoes extends React.Component
 
 		this.style =
 		{
-			width: '27.7rem',
+			width: '27.9rem',
 			display: 'flex',
 			flexDirection: 'row',
 			flexWrap: 'wrap',
@@ -26,7 +26,7 @@ export default class Bottoes extends React.Component
 			7, 8, 9,'+',
 			4, 5, 6, '-',
 			1, 2, 3, 'x',
-			'.', 0, '/', '=',
+			'C', 0, '=', '/',
 		];
 	};
 
@@ -34,8 +34,17 @@ export default class Bottoes extends React.Component
 	{
 		let res = eval( op );
 
-		return res;
+		return String(res);
 	};
+
+	deletar( op )
+	{
+		let newOp = op.split('');
+
+		newOp.pop();
+
+		return newOp.join('');
+	}
 
 	render()
 	{
@@ -50,6 +59,10 @@ export default class Bottoes extends React.Component
 								if(x === '=')
 								{
 									return this.calcular( this.props.op );
+								}
+								else if( x === 'C')
+								{
+									return this.deletar( this.props.op );
 								}
 								else
 									return this.props.op + x;
