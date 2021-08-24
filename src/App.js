@@ -4,7 +4,7 @@ import Visor from './comp/visor.js';
 
 export default function App()
 {
-	const [op, setOp] = useState();
+	const [op, setOp] = useState('');
 
 	const style =
 	{
@@ -19,8 +19,8 @@ export default function App()
 	return(
 		<div style={style}>
 			<h1>Calculadora</h1>
-			<Visor op={op} setOp={setOp}/>
-			<Bottoes/>
+			<Visor op={op}/>
+			<Bottoes setOp={setOp} op={op}/>
 		</div>
 	);
 };
